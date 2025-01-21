@@ -1,0 +1,5 @@
+telethon
+PyPDF2
+reportlab
+pillow
+python-dotenv
