@@ -1,4 +1,5 @@
 import os
+import base64
 import logging
 import tempfile
 import asyncio
@@ -44,13 +45,14 @@ def convert_image_to_pdf(image_path):
     return packet
 
 
-# Initialize Telethon client with a faster data center
-client = TelegramClient(
-    'session_name',
-    API_ID,
-    API_HASH,
-    connection=ConnectionTcpFull  # Use the class, not an instance
-)
+# Decode the Base64 session string
+SESSION_BASE64 = os.getenv('SESSION_BASE64')
+if SESSION_BASE64:
+    with open('session_name.session', 'wb') as f:
+        f.write(base64.b64decode(SESSION_BASE64))
+
+# Initialize Telethon client with the session file
+client = TelegramClient('session_name', API_ID, API_HASH, connection=ConnectionTcpFull)
 
 
 # Event handler for incoming messages
