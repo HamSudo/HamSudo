@@ -1,0 +1,13 @@
+# Ignore environment files
+.env
+bot.env
+
+# Ignore session files
+session_name.session
+
+# Ignore Python cache and virtual environment
+__pycache__/
+venv/
+*.pyc
+*.pyo
+*.pyd
